@@ -1,7 +1,7 @@
 # DSC-106-Project
 
 ## How to Run the Visualizations
-First setup the dataset by running `data_cleaning.ipynb` to output a dataset called `data_master.csv` to be used by the various visualization notebooks. Make sure the dataset outputted is in the same root as all the other notebooks. From here, you can load individual graphs by opening their respective notebooks(i.e. `collab_popularity_network_pop.ipynb`) and running all cells. Another option is to open `All_Visualizations.ipynb` to view all the graphs in a single notebook.
+First, setup the dataset by running `data_cleaning.ipynb` to output a dataset called `data_master.csv` which will be used by the various visualization notebooks. Make sure the dataset outputted is in the same root directory as all the other notebooks. From here, you can load individual graphs by opening their respective notebooks (i.e. `collab_popularity_network_pop.ipynb`) and running all cells. Another option is to open `All_Visualizations.ipynb` to view all the graphs in a single notebook.
 
 ## Libraries Used
 ```
