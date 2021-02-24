@@ -41,9 +41,12 @@ data_master.csv
 ```
 attribute_line.ipynb
 collab_line.ipynb
+collab_popularity_network_pop.ipynb
+collab_popularity_network_rap.ipynb
 genre_line.ipynb
 genre_popularity_scatter.ipynb
 timescaled_top_collaborators.ipynb
+
 ```
  
 ### Final Graphs
