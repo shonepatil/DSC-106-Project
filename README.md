@@ -18,6 +18,7 @@ networkx
 numpy
 pandas
 pyvis
+RISE
 ```
 
 ## Files
@@ -25,7 +26,7 @@ pyvis
 ### Information
 ```
 README.md
-powerpoint TODO
+final_presentation.ipynb
 ```
 
 ### CSVs
