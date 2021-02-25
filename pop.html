@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>None</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1400;
+            height: 700;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Justin Bieber", "label": "Justin Bieber", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "benny blanco", "label": "benny blanco", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Shawn Mendes", "label": "Shawn Mendes", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Chance the Rapper", "label": "Chance the Rapper", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Ariana Grande", "label": "Ariana Grande", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Dan + Shay", "label": "Dan + Shay", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Ed Sheeran", "label": "Ed Sheeran", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Quavo", "label": "Quavo", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Cardi B", "label": "Cardi B", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Megan Thee Stallion", "label": "Megan Thee Stallion", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Bad Bunny", "label": "Bad Bunny", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "J Balvin", "label": "J Balvin", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Doja Cat", "label": "Doja Cat", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "DaBaby", "label": "DaBaby", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Camila Cabello", "label": "Camila Cabello", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Dua Lipa", "label": "Dua Lipa", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Miley Cyrus", "label": "Miley Cyrus", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Billie Eilish", "label": "Billie Eilish", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Khalid", "label": "Khalid", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Marshmello", "label": "Marshmello", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Robin Schulz", "label": "Robin Schulz", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "KIDDO", "label": "KIDDO", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Lady Gaga", "label": "Lady Gaga", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "DJ Khaled", "label": "DJ Khaled", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Drake", "label": "Drake", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Chris Brown", "label": "Chris Brown", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Black Eyed Peas", "label": "Black Eyed Peas", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Shakira", "label": "Shakira", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Wyclef Jean", "label": "Wyclef Jean", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Jason Derulo", "label": "Jason Derulo", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Nuka", "label": "Nuka", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "JP Saxe", "label": "JP Saxe", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Julia Michaels", "label": "Julia Michaels", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Young Thug", "label": "Young Thug", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Halsey", "label": "Halsey", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Bastille", "label": "Bastille", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "The Chainsmokers", "label": "The Chainsmokers", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Saweetie", "label": "Saweetie", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kina", "label": "Kina", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Sn\u00f8w", "label": "Sn\u00f8w", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Adriana Proenza", "label": "Adriana Proenza", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Bradley Cooper", "label": "Bradley Cooper", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Coldplay", "label": "Coldplay", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "The Weeknd", "label": "The Weeknd", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Daft Punk", "label": "Daft Punk", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Ty Dolla $ign", "label": "Ty Dolla $ign", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Post Malone", "label": "Post Malone", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SZA", "label": "SZA", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "The Neptunes", "label": "The Neptunes", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Pharrell Williams", "label": "Pharrell Williams", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Sigala", "label": "Sigala", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "James Arthur", "label": "James Arthur", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Rihanna", "label": "Rihanna", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "JAY-Z", "label": "JAY-Z", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Taylor Swift", "label": "Taylor Swift", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "HAIM", "label": "HAIM", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "BENEE", "label": "BENEE", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Gus Dapperton", "label": "Gus Dapperton", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Zedd", "label": "Zedd", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Maren Morris", "label": "Maren Morris", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Grey", "label": "Grey", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "P!nk", "label": "P!nk", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Nate Ruess", "label": "Nate Ruess", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "ZAYN", "label": "ZAYN", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Sia", "label": "Sia", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Jeremy Zucker", "label": "Jeremy Zucker", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Chelsea Cutler", "label": "Chelsea Cutler", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Mark Ronson", "label": "Mark Ronson", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Bruno Mars", "label": "Bruno Mars", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "Justin Bieber", "title": "Lonely (with benny blanco), Popularity: 92", "to": "benny blanco", "weight": 1, "width": 2.92}, {"from": "Justin Bieber", "title": "Monster (Shawn Mendes \u0026 Justin Bieber), Popularity: 82", "to": "Shawn Mendes", "weight": 1, "width": 2.82}, {"from": "Justin Bieber", "title": "Holy (feat. Chance The Rapper), Popularity: 90", "to": "Chance the Rapper", "weight": 1, "width": 2.9}, {"from": "Justin Bieber", "title": "Stuck with U (with Justin Bieber), Popularity: 87", "to": "Ariana Grande", "weight": 1, "width": 2.87}, {"from": "Justin Bieber", "title": "10,000 Hours (with Justin Bieber), Popularity: 84", "to": "Dan + Shay", "weight": 1, "width": 2.84}, {"from": "Justin Bieber", "title": "I Don\u0027t Care (with Justin Bieber), Popularity: 82", "to": "Ed Sheeran", "weight": 1, "width": 2.82}, {"from": "Justin Bieber", "title": "Intentions (feat. Quavo), Popularity: 82", "to": "Quavo", "weight": 1, "width": 2.82}, {"from": "Cardi B", "title": "WAP (feat. Megan Thee Stallion), Popularity: 92", "to": "Megan Thee Stallion", "weight": 1, "width": 2.92}, {"from": "Cardi B", "title": "I Like It, Popularity: 81", "to": "Bad Bunny", "weight": 1, "width": 2.81}, {"from": "Cardi B", "title": "I Like It, Popularity: 81", "to": "J Balvin", "weight": 1, "width": 2.81}, {"from": "Megan Thee Stallion", "title": "34+35 Remix (feat. Doja Cat, Megan Thee Stallion) - Remix, Popularity: 84", "to": "Ariana Grande", "weight": 1, "width": 2.84}, {"from": "Megan Thee Stallion", "title": "34+35 Remix (feat. Doja Cat, Megan Thee Stallion) - Remix, Popularity: 84", "to": "Doja Cat", "weight": 1, "width": 2.84}, {"from": "Megan Thee Stallion", "title": "Cry Baby (feat. DaBaby), Popularity: 83", "to": "DaBaby", "weight": 1, "width": 2.83}, {"from": "Shawn Mendes", "title": "Se\u00f1orita, Popularity: 84", "to": "Camila Cabello", "weight": 1, "width": 2.84}, {"from": "Dua Lipa", "title": "Levitating (feat. DaBaby), Popularity: 85", "to": "DaBaby", "weight": 1, "width": 2.85}, {"from": "Dua Lipa", "title": "Prisoner (feat. Dua Lipa), Popularity: 84", "to": "Miley Cyrus", "weight": 1, "width": 2.84}, {"from": "Billie Eilish", "title": "lovely (with Khalid), Popularity: 88", "to": "Khalid", "weight": 1, "width": 2.88}, {"from": "Khalid", "title": "Silence, Popularity: 82", "to": "Marshmello", "weight": 1, "width": 2.82}, {"from": "Robin Schulz", "title": "All We Got (feat. KIDDO), Popularity: 87", "to": "KIDDO", "weight": 1, "width": 2.87}, {"from": "Ariana Grande", "title": "Rain On Me (with Ariana Grande), Popularity: 81", "to": "Lady Gaga", "weight": 1, "width": 2.81}, {"from": "Ariana Grande", "title": "34+35 Remix (feat. Doja Cat, Megan Thee Stallion) - Remix, Popularity: 84", "to": "Doja Cat", "weight": 1, "width": 2.84}, {"from": "DJ Khaled", "title": "GREECE (feat. Drake), Popularity: 84", "to": "Drake", "weight": 1, "width": 2.84}, {"from": "Drake", "title": "No Guidance (feat. Drake), Popularity: 82", "to": "Chris Brown", "weight": 1, "width": 2.82}, {"from": "Black Eyed Peas", "title": "GIRL LIKE ME, Popularity: 87", "to": "Shakira", "weight": 1, "width": 2.87}, {"from": "Shakira", "title": "Hips Don\u0027t Lie (feat. Wyclef Jean), Popularity: 82", "to": "Wyclef Jean", "weight": 1, "width": 2.82}, {"from": "Jason Derulo", "title": "Love Not War (The Tampa Beat), Popularity: 86", "to": "Nuka", "weight": 1, "width": 2.86}, {"from": "JP Saxe", "title": "If the World Was Ending - feat. Julia Michaels, Popularity: 86", "to": "Julia Michaels", "weight": 1, "width": 2.86}, {"from": "Chris Brown", "title": "Go Crazy, Popularity: 85", "to": "Young Thug", "weight": 1, "width": 2.85}, {"from": "Marshmello", "title": "Be Kind (with Halsey), Popularity: 85", "to": "Halsey", "weight": 1, "width": 2.85}, {"from": "Marshmello", "title": "Happier, Popularity: 84", "to": "Bastille", "weight": 1, "width": 2.84}, {"from": "Halsey", "title": "Closer, Popularity: 84", "to": "The Chainsmokers", "weight": 1, "width": 2.84}, {"from": "Saweetie", "title": "Best Friend (feat. Doja Cat), Popularity: 84", "to": "Doja Cat", "weight": 1, "width": 2.84}, {"from": "Kina", "title": "Get You The Moon (feat. Sn\u00f8w), Popularity: 84", "to": "Sn\u00f8w", "weight": 1, "width": 2.84}, {"from": "Kina", "title": "Can We Kiss Forever?, Popularity: 82", "to": "Adriana Proenza", "weight": 1, "width": 2.82}, {"from": "Lady Gaga", "title": "Shallow, Popularity: 84", "to": "Bradley Cooper", "weight": 1, "width": 2.84}, {"from": "The Chainsmokers", "title": "Something Just Like This, Popularity: 82", "to": "Coldplay", "weight": 1, "width": 2.82}, {"from": "The Weeknd", "title": "Starboy, Popularity: 83", "to": "Daft Punk", "weight": 1, "width": 2.83}, {"from": "Ty Dolla $ign", "title": "Spicy (feat. Post Malone), Popularity: 83", "to": "Post Malone", "weight": 1, "width": 2.83}, {"from": "Ty Dolla $ign", "title": "Hit Different, Popularity: 82", "to": "SZA", "weight": 1, "width": 2.82}, {"from": "Ty Dolla $ign", "title": "Hit Different, Popularity: 82", "to": "The Neptunes", "weight": 1, "width": 2.82}, {"from": "Ty Dolla $ign", "title": "Hit Different, Popularity: 82", "to": "Pharrell Williams", "weight": 1, "width": 2.82}, {"from": "Sigala", "title": "Lasting Lover, Popularity: 83", "to": "James Arthur", "weight": 1, "width": 2.83}, {"from": "Rihanna", "title": "Umbrella, Popularity: 82", "to": "JAY-Z", "weight": 1, "width": 2.82}, {"from": "Taylor Swift", "title": "no body, no crime (feat. HAIM), Popularity: 82", "to": "HAIM", "weight": 1, "width": 2.82}, {"from": "BENEE", "title": "Supalonely, Popularity: 82", "to": "Gus Dapperton", "weight": 1, "width": 2.82}, {"from": "Zedd", "title": "The Middle, Popularity: 82", "to": "Maren Morris", "weight": 1, "width": 2.82}, {"from": "Zedd", "title": "The Middle, Popularity: 82", "to": "Grey", "weight": 1, "width": 2.82}, {"from": "Maren Morris", "title": "The Middle, Popularity: 82", "to": "Grey", "weight": 1, "width": 2.82}, {"from": "SZA", "title": "Hit Different, Popularity: 82", "to": "The Neptunes", "weight": 1, "width": 2.82}, {"from": "SZA", "title": "Hit Different, Popularity: 82", "to": "Pharrell Williams", "weight": 1, "width": 2.82}, {"from": "The Neptunes", "title": "Hit Different, Popularity: 82", "to": "Pharrell Williams", "weight": 1, "width": 2.82}, {"from": "P!nk", "title": "Just Give Me a Reason (feat. Nate Ruess), Popularity: 81", "to": "Nate Ruess", "weight": 1, "width": 2.81}, {"from": "ZAYN", "title": "Dusk Till Dawn - Radio Edit, Popularity: 81", "to": "Sia", "weight": 1, "width": 2.81}, {"from": "Jeremy Zucker", "title": "you were good to me, Popularity: 81", "to": "Chelsea Cutler", "weight": 1, "width": 2.81}, {"from": "Bad Bunny", "title": "I Like It, Popularity: 81", "to": "J Balvin", "weight": 1, "width": 2.81}, {"from": "Mark Ronson", "title": "Uptown Funk (feat. Bruno Mars), Popularity: 81", "to": "Bruno Mars", "weight": 1, "width": 2.81}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -50,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

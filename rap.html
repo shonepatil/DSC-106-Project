@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>None</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1400;
+            height: 700;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "DaBaby", "label": "DaBaby", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Roddy Ricch", "label": "Roddy Ricch", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Jack Harlow", "label": "Jack Harlow", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Tory Lanez", "label": "Tory Lanez", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Lil Wayne", "label": "Lil Wayne", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Mustard", "label": "Mustard", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Internet Money", "label": "Internet Money", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Gunna", "label": "Gunna", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Don Toliver", "label": "Don Toliver", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "NAV", "label": "NAV", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Lil Baby", "label": "Lil Baby", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Metro Boomin", "label": "Metro Boomin", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Young Thug", "label": "Young Thug", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Drake", "label": "Drake", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Lil Durk", "label": "Lil Durk", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Future", "label": "Future", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Giveon", "label": "Giveon", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "21 Savage", "label": "21 Savage", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Meek Mill", "label": "Meek Mill", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Rick Ross", "label": "Rick Ross", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "WizKid", "label": "WizKid", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kyla", "label": "Kyla", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "King Von", "label": "King Von", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Eminem", "label": "Eminem", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Juice WRLD", "label": "Juice WRLD", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Nate Dogg", "label": "Nate Dogg", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Rihanna", "label": "Rihanna", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "G Herbo", "label": "G Herbo", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Lil Uzi Vert", "label": "Lil Uzi Vert", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Chance the Rapper", "label": "Chance the Rapper", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Big Sean", "label": "Big Sean", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Post Malone", "label": "Post Malone", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Swae Lee", "label": "Swae Lee", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Quavo", "label": "Quavo", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Ty Dolla $ign", "label": "Ty Dolla $ign", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Offset", "label": "Offset", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "THE SCOTTS", "label": "THE SCOTTS", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Travis Scott", "label": "Travis Scott", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kid Cudi", "label": "Kid Cudi", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "JACKBOYS", "label": "JACKBOYS", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "M.I.A.", "label": "M.I.A.", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Pop Smoke", "label": "Pop Smoke", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Skepta", "label": "Skepta", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "French Montana", "label": "French Montana", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Octavian", "label": "Octavian", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "A$AP Rocky", "label": "A$AP Rocky", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "42 Dugg", "label": "42 Dugg", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Wiz Khalifa", "label": "Wiz Khalifa", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Charlie Puth", "label": "Charlie Puth", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Coolio", "label": "Coolio", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "L.V.", "label": "L.V.", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Tyler, The Creator", "label": "Tyler, The Creator", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kali Uchis", "label": "Kali Uchis", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kendrick Lamar", "label": "Kendrick Lamar", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SZA", "label": "SZA", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "JAY-Z", "label": "JAY-Z", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Alicia Keys", "label": "Alicia Keys", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "A Boogie Wit da Hoodie", "label": "A Boogie Wit da Hoodie", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "6ix9ine", "label": "6ix9ine", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "50 Cent", "label": "50 Cent", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Olivia", "label": "Olivia", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Dr. Dre", "label": "Dr. Dre", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Snoop Dogg", "label": "Snoop Dogg", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "DaBaby", "title": "ROCKSTAR (feat. Roddy Ricch), Popularity: 91", "to": "Roddy Ricch", "weight": 1, "width": 2.91}, {"from": "DaBaby", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Jack Harlow", "weight": 1, "width": 2.85}, {"from": "DaBaby", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Tory Lanez", "weight": 1, "width": 2.85}, {"from": "DaBaby", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Lil Wayne", "weight": 1, "width": 2.85}, {"from": "Roddy Ricch", "title": "High Fashion (feat. Mustard), Popularity: 81", "to": "Mustard", "weight": 1, "width": 2.81}, {"from": "Internet Money", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "Gunna", "weight": 1, "width": 2.88}, {"from": "Internet Money", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "Don Toliver", "weight": 1, "width": 2.88}, {"from": "Internet Money", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "NAV", "weight": 1, "width": 2.88}, {"from": "Gunna", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "Don Toliver", "weight": 1, "width": 2.88}, {"from": "Gunna", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "NAV", "weight": 1, "width": 2.88}, {"from": "Gunna", "title": "Drip Too Hard (Lil Baby \u0026 Gunna), Popularity: 82", "to": "Lil Baby", "weight": 1, "width": 2.82}, {"from": "Gunna", "title": "Space Cadet (feat. Gunna), Popularity: 81", "to": "Metro Boomin", "weight": 1, "width": 2.81}, {"from": "Gunna", "title": "DOLLAZ ON MY HEAD (feat. Young Thug), Popularity: 81", "to": "Young Thug", "weight": 1, "width": 2.81}, {"from": "Don Toliver", "title": "Lemonade (feat. Gunna, Don Toliver \u0026 NAV), Popularity: 88", "to": "NAV", "weight": 1, "width": 2.88}, {"from": "Drake", "title": "Laugh Now Cry Later (feat. Lil Durk), Popularity: 89", "to": "Lil Durk", "weight": 1, "width": 2.89}, {"from": "Drake", "title": "Life Is Good (feat. Drake), Popularity: 85", "to": "Future", "weight": 1, "width": 2.85}, {"from": "Drake", "title": "Chicago Freestyle (feat. Giveon), Popularity: 83", "to": "Giveon", "weight": 1, "width": 2.83}, {"from": "Drake", "title": "Mr. Right Now (feat. Drake), Popularity: 82", "to": "21 Savage", "weight": 1, "width": 2.82}, {"from": "Drake", "title": "Mr. Right Now (feat. Drake), Popularity: 82", "to": "Metro Boomin", "weight": 1, "width": 2.82}, {"from": "Drake", "title": "Going Bad (feat. Drake), Popularity: 81", "to": "Meek Mill", "weight": 1, "width": 2.81}, {"from": "Drake", "title": "Money In The Grave (Drake ft. Rick Ross), Popularity: 81", "to": "Rick Ross", "weight": 1, "width": 2.81}, {"from": "Drake", "title": "One Dance, Popularity: 80", "to": "WizKid", "weight": 1, "width": 2.8}, {"from": "Drake", "title": "One Dance, Popularity: 80", "to": "Kyla", "weight": 1, "width": 2.8}, {"from": "Lil Durk", "title": "Still Trappin\u0027 (with King Von), Popularity: 80", "to": "King Von", "weight": 1, "width": 2.8}, {"from": "Eminem", "title": "Godzilla (feat. Juice WRLD), Popularity: 86", "to": "Juice WRLD", "weight": 1, "width": 2.86}, {"from": "Eminem", "title": "\u0027Till I Collapse, Popularity: 83", "to": "Nate Dogg", "weight": 1, "width": 2.83}, {"from": "Eminem", "title": "Love The Way You Lie, Popularity: 81", "to": "Rihanna", "weight": 1, "width": 2.81}, {"from": "Juice WRLD", "title": "PTSD, Popularity: 80", "to": "G Herbo", "weight": 1, "width": 2.8}, {"from": "Juice WRLD", "title": "PTSD, Popularity: 80", "to": "Lil Uzi Vert", "weight": 1, "width": 2.8}, {"from": "Juice WRLD", "title": "PTSD, Popularity: 80", "to": "Chance the Rapper", "weight": 1, "width": 2.8}, {"from": "Future", "title": "Drankin N Smokin, Popularity: 83", "to": "Lil Uzi Vert", "weight": 1, "width": 2.83}, {"from": "Jack Harlow", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Tory Lanez", "weight": 1, "width": 2.85}, {"from": "Jack Harlow", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Lil Wayne", "weight": 1, "width": 2.85}, {"from": "Jack Harlow", "title": "Way Out (feat. Big Sean), Popularity: 80", "to": "Big Sean", "weight": 1, "width": 2.8}, {"from": "Tory Lanez", "title": "WHATS POPPIN (feat. DaBaby, Tory Lanez \u0026 Lil Wayne) - Remix, Popularity: 85", "to": "Lil Wayne", "weight": 1, "width": 2.85}, {"from": "Post Malone", "title": "rockstar (feat. 21 Savage), Popularity: 85", "to": "21 Savage", "weight": 1, "width": 2.85}, {"from": "Post Malone", "title": "Sunflower - Spider-Man: Into the Spider-Verse, Popularity: 82", "to": "Swae Lee", "weight": 1, "width": 2.82}, {"from": "Post Malone", "title": "Wolves (feat. Post Malone), Popularity: 82", "to": "Big Sean", "weight": 1, "width": 2.82}, {"from": "Post Malone", "title": "Goodbyes (feat. Young Thug), Popularity: 81", "to": "Young Thug", "weight": 1, "width": 2.81}, {"from": "Post Malone", "title": "Congratulations, Popularity: 81", "to": "Quavo", "weight": 1, "width": 2.81}, {"from": "Post Malone", "title": "Psycho (feat. Ty Dolla $ign), Popularity: 80", "to": "Ty Dolla $ign", "weight": 1, "width": 2.8}, {"from": "21 Savage", "title": "Mr. Right Now (feat. Drake), Popularity: 82", "to": "Metro Boomin", "weight": 1, "width": 2.82}, {"from": "Metro Boomin", "title": "Ric Flair Drip (\u0026 Metro Boomin), Popularity: 81", "to": "Offset", "weight": 1, "width": 2.81}, {"from": "THE SCOTTS", "title": "THE SCOTTS, Popularity: 84", "to": "Travis Scott", "weight": 1, "width": 2.84}, {"from": "THE SCOTTS", "title": "THE SCOTTS, Popularity: 84", "to": "Kid Cudi", "weight": 1, "width": 2.84}, {"from": "Travis Scott", "title": "THE SCOTTS, Popularity: 84", "to": "Kid Cudi", "weight": 1, "width": 2.84}, {"from": "Travis Scott", "title": "GATTI, Popularity: 80", "to": "JACKBOYS", "weight": 1, "width": 2.8}, {"from": "Travis Scott", "title": "FRANCHISE (feat. Young Thug \u0026 M.I.A.), Popularity: 81", "to": "Young Thug", "weight": 1, "width": 2.81}, {"from": "Travis Scott", "title": "FRANCHISE (feat. Young Thug \u0026 M.I.A.), Popularity: 81", "to": "M.I.A.", "weight": 1, "width": 2.81}, {"from": "Travis Scott", "title": "GATTI, Popularity: 80", "to": "Pop Smoke", "weight": 1, "width": 2.8}, {"from": "Kid Cudi", "title": "Show Out (with Skepta \u0026 Pop Smoke), Popularity: 83", "to": "Skepta", "weight": 1, "width": 2.83}, {"from": "Kid Cudi", "title": "Show Out (with Skepta \u0026 Pop Smoke), Popularity: 83", "to": "Pop Smoke", "weight": 1, "width": 2.83}, {"from": "Swae Lee", "title": "Unforgettable, Popularity: 80", "to": "French Montana", "weight": 1, "width": 2.8}, {"from": "JACKBOYS", "title": "OUT WEST (feat. Young Thug), Popularity: 83", "to": "Young Thug", "weight": 1, "width": 2.83}, {"from": "JACKBOYS", "title": "GATTI, Popularity: 80", "to": "Pop Smoke", "weight": 1, "width": 2.8}, {"from": "Young Thug", "title": "FRANCHISE (feat. Young Thug \u0026 M.I.A.), Popularity: 81", "to": "M.I.A.", "weight": 1, "width": 2.81}, {"from": "Skepta", "title": "Show Out (with Skepta \u0026 Pop Smoke), Popularity: 83", "to": "Pop Smoke", "weight": 1, "width": 2.83}, {"from": "Skepta", "title": "Papi Chulo, Popularity: 82", "to": "Octavian", "weight": 1, "width": 2.82}, {"from": "Skepta", "title": "Praise The Lord (Da Shine) (feat. Skepta), Popularity: 80", "to": "A$AP Rocky", "weight": 1, "width": 2.8}, {"from": "Lil Uzi Vert", "title": "PTSD, Popularity: 80", "to": "G Herbo", "weight": 1, "width": 2.8}, {"from": "Lil Uzi Vert", "title": "PTSD, Popularity: 80", "to": "Chance the Rapper", "weight": 1, "width": 2.8}, {"from": "Lil Baby", "title": "We Paid (feat. 42 Dugg), Popularity: 81", "to": "42 Dugg", "weight": 1, "width": 2.81}, {"from": "Wiz Khalifa", "title": "See You Again (feat. Charlie Puth), Popularity: 81", "to": "Charlie Puth", "weight": 1, "width": 2.81}, {"from": "Coolio", "title": "Gangsta\u0027s Paradise, Popularity: 81", "to": "L.V.", "weight": 1, "width": 2.81}, {"from": "Tyler, The Creator", "title": "See You Again (feat. Kali Uchis), Popularity: 80", "to": "Kali Uchis", "weight": 1, "width": 2.8}, {"from": "WizKid", "title": "One Dance, Popularity: 80", "to": "Kyla", "weight": 1, "width": 2.8}, {"from": "Kendrick Lamar", "title": "All The Stars (with SZA), Popularity: 80", "to": "SZA", "weight": 1, "width": 2.8}, {"from": "JAY-Z", "title": "Empire State Of Mind, Popularity: 80", "to": "Alicia Keys", "weight": 1, "width": 2.8}, {"from": "G Herbo", "title": "PTSD, Popularity: 80", "to": "Chance the Rapper", "weight": 1, "width": 2.8}, {"from": "A Boogie Wit da Hoodie", "title": "Swervin (feat. 6ix9ine), Popularity: 80", "to": "6ix9ine", "weight": 1, "width": 2.8}, {"from": "50 Cent", "title": "Candy Shop, Popularity: 79", "to": "Olivia", "weight": 1, "width": 2.79}, {"from": "Dr. Dre", "title": "Still D.R.E., Popularity: 79", "to": "Snoop Dogg", "weight": 1, "width": 2.79}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -50,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
